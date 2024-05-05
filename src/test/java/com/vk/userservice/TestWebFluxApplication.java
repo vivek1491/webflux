@@ -31,7 +31,7 @@ public class TestWebFluxApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.from(WebFluxApplication::main).with(TestWebFluxApplication.class).run(args);
+		SpringApplication.from(UserApplication::main).with(TestWebFluxApplication.class).run(args);
 	}
 
 }

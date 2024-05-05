@@ -11,12 +11,13 @@ import org.springframework.stereotype.Service;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    UserMapper userMapper;
 
      public UserDto createUser(UserDto userDto){
-
-         User user= UserMapper.FromDto(userDto);
+         User user= userMapper.fromDto(userDto);
          user= userRepository.save(user);
-         return  UserMapper.toDto(user);
+         return  userMapper.toDto(user);
      }
 
 

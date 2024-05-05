@@ -2,28 +2,17 @@ package com.vk.userservice.mapper;
 
 import com.vk.userservice.entities.User;
 import com.vk.userservice.model.UserDto;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
-public class UserMapper {
+@Mapper(componentModel = "spring")
+public interface UserMapper {
 
-   public static User FromDto(UserDto userDto){
+    @Mapping(target = "userId",source = "userDto.id")
+    @Mapping(target = "emailId",source = "userDto.email")
+    User fromDto(UserDto userDto);
+    @Mapping(target = "id",source = "userId")
+    @Mapping(target = "email",source = "emailId")
 
-          User user=new User();
-          user.setUserId(userDto.getId());
-          user.setName(userDto.getName());
-          user.setPhone(userDto.getPhone());
-          user.setPassword(userDto.getPassword());
-          user.setEmailId(userDto.getEmail());
-          return user;
-    }
-
-    public static UserDto toDto(User user){
-
-        UserDto userdto=new UserDto();
-        userdto.setId(user.getUserId());
-        userdto.setName(user.getName());
-        userdto.setPhone(user.getPhone());
-        userdto.setPassword(user.getPassword());
-        userdto.setEmail(user.getEmailId());
-        return userdto;
-    }
+    UserDto toDto(User user);
 }
