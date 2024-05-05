@@ -5,6 +5,8 @@ package com.vk.userservice.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Table(name = "userDetails")
 @Data
@@ -24,4 +26,7 @@ public class User {
 
      @Column(name = "phone")
      private String phone;
+
+     @OneToMany(mappedBy = "addressId",cascade =CascadeType.ALL )
+     List<Address> address;
 }
